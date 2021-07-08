@@ -33,7 +33,8 @@ function generatePassword() {
   }
   console.log(collection)
   // remove things user do not need
-
+  collection = collection.filter(character => !options.excludeCharacters.includes(character))
+  console.log('after remove collection', collection)
   // start generating password
 
   // returnr the generated password
