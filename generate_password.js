@@ -13,12 +13,12 @@ function generatePassword() {
     lowercase: 'on',
     uppercase: 'on',
     numbers: 'on',
-    excludeCharacters: '40'
+    // symbols: 'on',
+    excludeCharacters: 'ABCDEFG'
   }
   console.log('options', options)
   // create a collection to store things user picked up
   let collection = []
-  console.log(options.lowercase)
   if (options.lowercase) {
     collection = collection.concat(...lowerCaseLetter)  //把字串轉成陣列 ...lowerCaseLetter
   }
@@ -36,9 +36,21 @@ function generatePassword() {
   collection = collection.filter(character => !options.excludeCharacters.includes(character))
   console.log('after remove collection', collection)
   // start generating password
-
-  // returnr the generated password
+  let password = ''
+  for (let AmountOfNum = options.length; AmountOfNum > 0; AmountOfNum--) {
+    password += sample(collection)
+  }
+  console.log(password)
+  // return the generated password
+  return password
   console.log('This function will generate password')
 }
+
+// define sample function to randomly return an item in an array
+function sample(array) {
+  let index = Math.floor(Math.random() * array.length)
+  return array.slice(index, index + 1)
+}
+
 // invoke generatePassword function
 generatePassword()
