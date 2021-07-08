@@ -6,6 +6,16 @@ function generatePassword() {
   const upperCaseLetter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   const numbers = '0123456789'
   const symbols = '`~!@$%^&*()-_+={}[]|;:"<>,.?/'
+
+  // define dummy data
+  const options = {
+    length: 12,
+    lowercase: 'on',
+    uppercase: 'on',
+    numbers: 'on',
+    excludeCharacters: '40'
+  }
+  console.log('options', options)
   // create a collection to store things user picked up
 
   // remove things user do not need
