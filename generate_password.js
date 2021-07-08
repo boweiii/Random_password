@@ -17,7 +17,21 @@ function generatePassword() {
   }
   console.log('options', options)
   // create a collection to store things user picked up
-
+  let collection = []
+  console.log(options.lowercase)
+  if (options.lowercase) {
+    collection = collection.concat(...lowerCaseLetter)  //把字串轉成陣列 ...lowerCaseLetter
+  }
+  if (options.uppercase) {
+    collection = collection.concat(upperCaseLetter.split(''))
+  }
+  if (options.numbers) {
+    collection = collection.concat(...numbers)
+  }
+  if (options.symbols) {
+    collection = collection.concat(...symbols)
+  }
+  console.log(collection)
   // remove things user do not need
 
   // start generating password
