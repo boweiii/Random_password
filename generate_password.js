@@ -1,6 +1,6 @@
 // generate_password.js
 // define generatePassword function
-function generatePassword() {
+function generatePassword(options) {
   // define things user might want
   const lowerCaseLetter = 'abcdefghijklmnopqrstuvwxyz'
   const upperCaseLetter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -8,14 +8,15 @@ function generatePassword() {
   const symbols = '`~!@$%^&*()-_+={}[]|;:"<>,.?/'
 
   // define dummy data
-  const options = {
-    length: 12,
-    lowercase: 'on',
-    uppercase: 'on',
-    numbers: 'on',
-    // symbols: 'on',
-    excludeCharacters: 'ABCDEFG'
-  }
+  // 假資料
+  // const options = {
+  //   length: 12,
+  //   lowercase: 'on',
+  //   uppercase: 'on',
+  //   numbers: 'on',
+  //   // symbols: 'on',
+  //   excludeCharacters: 'ABCDEFG'
+  // }
   console.log('options', options)
   // create a collection to store things user picked up
   let collection = []
@@ -32,18 +33,20 @@ function generatePassword() {
     collection = collection.concat(...symbols)
   }
   console.log(collection)
+
   // remove things user do not need
   collection = collection.filter(character => !options.excludeCharacters.includes(character))
   console.log('after remove collection', collection)
+
   // start generating password
   let password = ''
   for (let AmountOfNum = options.length; AmountOfNum > 0; AmountOfNum--) {
     password += sample(collection)
   }
   console.log(password)
+
   // return the generated password
   return password
-  console.log('This function will generate password')
 }
 
 // define sample function to randomly return an item in an array
@@ -53,4 +56,8 @@ function sample(array) {
 }
 
 // invoke generatePassword function
-generatePassword()
+// generatePassword()
+
+// export generatePassword function for other files to use
+// 會出此函式
+module.exports = generatePassword
