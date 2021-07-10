@@ -20,9 +20,14 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  console.log('random password is: ', generatePassword(req.body))
-  const password = generatePassword(req.body)
-  res.render('index', { password: password })
+  // 將使用者前一次輸入內容保留在options，傳到前端顯示
+  const options = req.body
+  console.log('random password is: ', generatePassword(options))
+  const password = generatePassword(options)
+  res.render('index', {
+    password: password,
+    options: options
+  })
 })
 
 
